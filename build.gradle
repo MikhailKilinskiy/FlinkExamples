@@ -1,0 +1,89 @@
+group 'org'
+apply plugin: 'scala'
+apply plugin: 'maven-publish'
+apply plugin: 'distribution'
+
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+        classpath "net.researchgate:gradle-release:2.7.0"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+dependencies {
+    compile fileTree("libs") {
+        include '*.jar'
+    }
+
+    compile(group: 'org.scala-lang', name: 'scala-library', version: '2.11.12')
+    compile(group: 'org.scala-lang', name: 'scala-reflect', version: '2.11.12')
+    compile(group: 'org.scala-lang', name: 'scala-compiler', version: '2.11.12')
+    compile(group: 'org.scala-lang.modules', name: 'scala-xml_2.11', version: "1.1.1")
+
+
+    compile group: 'org.apache.flink', name: 'flink-core', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-clients_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-connector-kafka-base_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-connector-kafka_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-hadoop-fs', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-scala_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.9.0'
+    compile group: 'org.apache.thrift', name: 'libthrift', version: '0.13.0'
+
+    compile group: 'org.apache.avro', name: 'avro', version: '1.9.0'
+
+
+    compile group: 'org.apache.flink', name: 'flink-parquet_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.flink', name: 'flink-avro-confluent-registry_2.12', version: '1.9.0'
+    compile group: 'org.apache.flink', name: 'flink-avro_2.12', version: '1.9.0'
+
+    compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '3.1.1'
+    compile group: 'org.apache.parquet', name: 'parquet-avro', version: '1.10.0'
+
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.0.0.3.1.0.0-78'
+
+    compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '3.1.1.3.1.0.0-78'
+    // https://mvnrepository.com/artifact/io.confluent/kafka-schema-registry-client
+    compile group: 'io.confluent', name: 'kafka-schema-registry-client', version: '5.3.0'
+    // https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer
+    compile group: 'io.confluent', name: 'kafka-avro-serializer', version: '5.3.0'
+
+
+
+
+
+}
